@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="create-counter-events-table" author="app-generator">
+        <createTable tableName="counter_events">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="event_type" type="varchar(50)"/>
+            <column name="thread_name" type="varchar(100)"/>
+            <column name="old_value" type="int"/>
+            <column name="new_value" type="int"/>
+            <column name="timestamp" type="timestamp"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
