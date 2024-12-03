@@ -1,5 +1,0 @@
-package com.example.counterapp.repository.jpa;
-
-@Repository
-public class CounterEventJpaRepository {
-}
