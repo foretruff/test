@@ -1,10 +1,19 @@
 package com.example.counterapp.service;
 
+import com.example.counterapp.model.entity.CounterEventEntity;
+import com.example.counterapp.repository.jpa.CounterEventJpaRepository;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import java.util.concurrent.atomic.AtomicInteger;
+
 @Service
 @RequiredArgsConstructor
 public class CounterService {
 
-    private final CounterEventRepository counterEventRepository;
+    private final CounterEventJpaRepository counterEventRepository;
 
     @Getter
     private final AtomicInteger counter = new AtomicInteger(50);
@@ -38,12 +47,10 @@ public class CounterService {
     }
 
     private void logCounterEvent(String eventType, String threadName, int oldValue, int newValue) {
-        CounterEvent event = new CounterEvent(eventType, threadName, oldValue, newValue);
+        CounterEventEntity event = new CounterEventEntity(eventType, threadName, oldValue, newValue);
         counterEventRepository.save(event);
-        System.out.println(
-                String.format("%s Thread: %s, Old Value: %d, New Value: %d",
-                        eventType, threadName, oldValue, newValue)
-        );
+        System.out.printf("%s Thread: %s, Old Value: %d, New Value: %d%n",
+                eventType, threadName, oldValue, newValue);
     }
 
     public boolean isCounterInBounds() {

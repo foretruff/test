@@ -59,14 +59,3 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-// Liquibase configuration
-liquibase {
-    activities {
-        main {
-            changeLog = 'src/main/resources/db/changelog/db.changelog-master.xml'
-            url = System.getProperty('db.url', 'jdbc:postgresql://localhost:5432/counterdb')
-            username = System.getProperty('db.username', 'postgres')
-            password = System.getProperty('db.password', 'postgres')
-        }
-    }
-}

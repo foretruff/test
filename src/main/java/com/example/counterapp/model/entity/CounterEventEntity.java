@@ -1,10 +1,22 @@
 package com.example.counterapp.model.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+
 @Data
 @Entity
 @Table(name = "counter_events")
 @NoArgsConstructor
 public class CounterEventEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,7 +36,7 @@ public class CounterEventEntity {
     @Column(name = "timestamp")
     private LocalDateTime timestamp;
 
-    public CounterEvent(String eventType, String threadName, Integer oldValue, Integer newValue) {
+    public CounterEventEntity(String eventType, String threadName, Integer oldValue, Integer newValue) {
         this.eventType = eventType;
         this.threadName = threadName;
         this.oldValue = oldValue;

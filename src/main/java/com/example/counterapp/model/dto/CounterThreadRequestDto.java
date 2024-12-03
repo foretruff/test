@@ -1,5 +1,7 @@
 package com.example.counterapp.model.dto;
 
+import lombok.Data;
+
 @Data
 public class CounterThreadRequestDto {
 
